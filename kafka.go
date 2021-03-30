@@ -95,6 +95,8 @@ func NewKafkaConfig(tlsConfig *KafkaTLSConfig) *sarama.Config {
 		}
 		config.Net.TLS.Config = tlsConfig
 	}
+	config.Consumer.Offsets.AutoCommit.Enable = false
+	config.Consumer.Offsets.Initial = sarama.OffsetOldest
 	return config
 }
 
